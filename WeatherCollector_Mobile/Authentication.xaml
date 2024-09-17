@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherCollector_Mobile.Authentication"
+             Title="Authentication">
+    <Grid Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Image VerticalOptions="Center" HorizontalOptions="Center" Margin="0, 100, 0, 0">
+            <Image.Source>
+                <AppThemeBinding Light="Logos/weathercollector_logo.svg" Dark="Logos/weathercollector_logo_dark.svg"></AppThemeBinding>
+            </Image.Source>
+        </Image>
+
+        <Grid Grid.Row="1" HorizontalOptions="Center" VerticalOptions="StartAndExpand" RowSpacing="5" Margin="0, 100, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label FontSize="15" HorizontalOptions="CenterAndExpand">Login to your WeatherCollector instance</Label>
+
+            <StackLayout Grid.Row="1">
+                <Label HorizontalOptions="Start">Server address</Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Picker x:Name="ServerMethod"></Picker>
+                    <Entry Grid.Column="1" Placeholder="E.g. example.com OR 192.168.1.1" x:Name="ServerAddress" Keyboard="Url"></Entry>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2">
+                <Label HorizontalOptions="Start">Username</Label>
+                <Entry Placeholder="E.g. Bob" x:Name="Username"></Entry>
+            </StackLayout>
+
+            <StackLayout Grid.Row="3">
+                <Label HorizontalOptions="Start">Password</Label>
+                <Entry Placeholder="🤐 Don't tell anyone this" x:Name="Password" IsPassword="True"></Entry>
+            </StackLayout>
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalOptions="Start" VerticalOptions="Center">Remember me</Label>
+                <CheckBox Grid.Column="1" x:Name="RememberMe"></CheckBox>
+            </Grid>
+
+            <Button Text="Login" Grid.Row="5" x:Name="LoginBtn" Clicked="LoginBtn_Clicked"></Button>
+        </Grid>
+
+        <Grid Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="0, 100, 0, 0" x:Name="LoadingCover" IsVisible="False">
+            <Rectangle Opacity="0.75">
+                <Rectangle.Fill>
+                    <AppThemeBinding Light="White" Dark="#1f1f1f"></AppThemeBinding>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center"
+                               IsRunning="True" IsVisible="True" IsEnabled="True"
+                               Margin="0, 0, 0, 200" />
+        </Grid>
+    </Grid>
+</ContentPage>

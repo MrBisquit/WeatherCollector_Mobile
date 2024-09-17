@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="WeatherCollector_Mobile.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:WeatherCollector_Mobile"
+    Shell.FlyoutBehavior="Flyout"
+    FlyoutHeaderBehavior="CollapseOnScroll"
+    Title="WeatherCollector Mobile">
+
+    <!--<ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />-->
+
+    <Shell.FlyoutHeader>
+        <Grid Padding="10">
+            <Image VerticalOptions="Center">
+                <Image.Source>
+                    <AppThemeBinding Light="Logos/weathercollector_logo.svg" Dark="Logos/weathercollector_logo_dark.svg"></AppThemeBinding>
+                </Image.Source>
+            </Image>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Home">
+        <FlyoutItem.Icon>
+            <AppThemeBinding Light="FlyoutIcons/home_icon.svg" Dark="FlyoutIcons/home_icon_dark.svg"></AppThemeBinding>
+        </FlyoutItem.Icon>
+        
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Alerts">
+        <FlyoutItem.Icon>
+            <AppThemeBinding Light="FlyoutIcons/alerts_icon.svg" Dark="FlyoutIcons/alerts_icon_dark.svg"></AppThemeBinding>
+        </FlyoutItem.Icon>
+        
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate local:AlertsPage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Statistics">
+        <FlyoutItem.Icon>
+            <AppThemeBinding Light="FlyoutIcons/statistics_icon.svg" Dark="FlyoutIcons/statistics_icon_dark.svg"></AppThemeBinding>
+        </FlyoutItem.Icon>
+        
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate local:StatisticsPage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Data">
+        <FlyoutItem.Icon>
+            <AppThemeBinding Light="FlyoutIcons/data_icon.svg" Dark="FlyoutIcons/data_icon_dark.svg"></AppThemeBinding>
+        </FlyoutItem.Icon>
+        
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate local:DataPage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Photo Viewer">
+        <FlyoutItem.Icon>
+            <AppThemeBinding Light="FlyoutIcons/photo_viewer_icon.svg" Dark="FlyoutIcons/photo_viewer_icon_dark.svg"></AppThemeBinding>
+        </FlyoutItem.Icon>
+
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate local:PhotoViewer}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Settings">
+        <FlyoutItem.Icon>
+            <AppThemeBinding Light="FlyoutIcons/settings_icon.svg" Dark="FlyoutIcons/settings_icon_dark.svg"></AppThemeBinding>
+        </FlyoutItem.Icon>
+        
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}" />
+        </Tab>
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <Grid Padding="10">
+            <StackLayout Spacing="5">
+                <Label x:Name="ConnectionInfo">Connected to: Loading...</Label>
+                <Button Text="Logout" 
+                        BackgroundColor="Red" 
+                        TextColor="White"
+                        HorizontalOptions="FillAndExpand"
+                        x:Name="LogoutBtn" Clicked="LogoutBtn_Clicked" />
+            </StackLayout>
+        </Grid>
+    </Shell.FlyoutFooter>
+</Shell>

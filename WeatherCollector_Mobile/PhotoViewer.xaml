@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherCollector_Mobile.PhotoViewer"
+             Title="Photo Viewer"
+             Loaded="ContentPage_Loaded">
+    <Grid Padding="10">
+        <StackLayout Spacing="5">
+            <Grid HeightRequest="175">
+                <Rectangle HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Fill="Black"></Rectangle>
+                <Image VerticalOptions="CenterAndExpand" HorizontalOptions="Center" x:Name="CurrentImage"></Image>
+                <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="True" IsRunning="True" IsVisible="True" x:Name="CurrentImageLoader"></ActivityIndicator>
+            </Grid>
+            <Button Text="Take photo" x:Name="TakePhotoBtn" Clicked="TakePhotoBtn_Clicked"></Button>
+        </StackLayout>
+    </Grid>
+</ContentPage>

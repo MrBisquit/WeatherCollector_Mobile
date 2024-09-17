@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherCollector_Mobile.About"
+             Title="About">
+    <Grid Padding="10">
+        <ScrollView>
+            <StackLayout Spacing="5">
+                <StackLayout Spacing="3">
+                    <Label FontSize="20">What is this?</Label>
+                    <Label LineBreakMode="WordWrap">This is the mobile app for WeatherCollector, easily connect your WeatherCollector instance up to your phone and get live weather data straight from your sensors!</Label>
+                </StackLayout>
+                <StackLayout Spacing="3">
+                    <Label FontSize="20">How do I use it?</Label>
+                    <Label LineBreakMode="WordWrap">It will only work if you have a WeatherCollector instance set up and configured correctly. Visit https://github.com/MrBisquit/WeatherCollector/ for more information.</Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

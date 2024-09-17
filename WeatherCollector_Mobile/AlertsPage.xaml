@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherCollector_Mobile.AlertsPage"
+             Title="Alerts"
+             Loaded="ContentPage_Loaded">
+    <RefreshView x:Name="Reload" Refreshing="Reload_Refreshing">
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <RoundRectangle Fill="{DynamicResource Secondary}" CornerRadius="10" />
+            <StackLayout Orientation="Horizontal" Padding="3" Spacing="3">
+                <Rectangle RadiusX="15" RadiusY="15" Fill="#22C55E" WidthRequest="25" HeightRequest="25"></Rectangle>
+                <Label VerticalOptions="Center" Margin="0, 0, 10, 0">(1) Green</Label>
+
+                <Rectangle RadiusX="15" RadiusY="15" Fill="#EAB308" WidthRequest="25" HeightRequest="25"></Rectangle>
+                <Label VerticalOptions="Center" Margin="0, 0, 10, 0">(2) Yellow</Label>
+
+                <Rectangle RadiusX="15" RadiusY="15" Fill="#F59E0B" WidthRequest="25" HeightRequest="25"></Rectangle>
+                <Label VerticalOptions="Center" Margin="0, 0, 10, 0">(3) Amber</Label>
+
+                <Rectangle RadiusX="15" RadiusY="15" Fill="#EF4444" WidthRequest="25" HeightRequest="25"></Rectangle>
+                <Label VerticalOptions="Center">(4) Red</Label>
+            </StackLayout>
+
+            <ScrollView Grid.Row="1" Margin="0, 10, 0, 0">
+                <StackLayout Spacing="5" x:Name="AlertsList">
+                    <!--<Grid>
+                        <RoundRectangle Fill="#22C55E" CornerRadius="10"></RoundRectangle>
+                        <StackLayout Padding="5">
+                            <Label FontAttributes="Bold" FontSize="20" LineBreakMode="WordWrap">Sudden change in Wind Direction</Label>
+                            <Label LineBreakMode="WordWrap">Today at 12:12 the wind suddenly changed direction, the direction changed from 225° to 0°.</Label>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid>
+                        <RoundRectangle Fill="#EAB308" CornerRadius="10"></RoundRectangle>
+                        <StackLayout Padding="5">
+                            <Label FontAttributes="Bold" FontSize="20" LineBreakMode="WordWrap">Rain</Label>
+                            <Label LineBreakMode="WordWrap">Today at 12:12 there was [insert specific measurements] of rain.</Label>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid>
+                        <RoundRectangle Fill="#F59E0B" CornerRadius="10"></RoundRectangle>
+                        <StackLayout Padding="5">
+                            <Label FontAttributes="Bold" FontSize="20" LineBreakMode="WordWrap">High Wind</Label>
+                            <Label LineBreakMode="WordWrap">Today at 12:12 there was 50 mph of wind detected.</Label>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid>
+                        <RoundRectangle Fill="#EF4444" CornerRadius="10"></RoundRectangle>
+                        <StackLayout Padding="5">
+                            <Label FontAttributes="Bold" FontSize="20" LineBreakMode="WordWrap">Snow warning</Label>
+                            <Label LineBreakMode="WordWrap">Today at 12:12 the AI prediction model detected conditions that could lead to snow falling.</Label>
+                        </StackLayout>
+                    </Grid>-->
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </RefreshView>
+</ContentPage>

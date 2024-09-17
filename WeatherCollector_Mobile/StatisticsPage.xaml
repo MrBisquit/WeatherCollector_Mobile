@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherCollector_Mobile.StatisticsPage"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             Title="Statistics"
+             Loaded="ContentPage_Loaded">
+    <RefreshView x:Name="Reload" Refreshing="Reload_Refreshing">
+        <ScrollView>
+            <Grid Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout Spacing="3">
+                    <Label>Year:</Label>
+                    <Picker x:Name="Year" SelectedIndexChanged="Year_SelectedIndexChanged"></Picker>
+                    <Label>Month:</Label>
+                    <Picker x:Name="Month" SelectedIndexChanged="Month_SelectedIndexChanged" IsEnabled="False"></Picker>
+                    <Label>Day:</Label>
+                    <Picker x:Name="Day" SelectedIndexChanged="Day_SelectedIndexChanged" IsEnabled="False"></Picker>
+                    <Button Text="Fetch statistics" x:Name="FetchStatisticsBtn" Clicked="FetchStatisticsBtn_Clicked" IsEnabled="False"></Button>
+                </StackLayout>
+
+                <StackLayout Grid.Row="1" Padding="3" Spacing="3" x:Name="DailyStatistics" IsVisible="False">
+                    <Grid>
+                        <RoundRectangle Fill="#3B82F6" CornerRadius="5" />
+                        <StackLayout Padding="5">
+                            <Label TextColor="White">Average Temperature</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="AvgTemp">N/A°C</Label>
+                            <Label TextColor="White">Highest Temperature</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="HighTemp">N/A°C</Label>
+                            <Label TextColor="White">Lowest Temperature</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="LowTemp">N/A°C</Label>
+                        </StackLayout>
+                    </Grid>
+                    
+                    <Grid>
+                        <RoundRectangle Fill="#22C55E" CornerRadius="5" />
+                        <StackLayout Padding="5">
+                            <Label TextColor="White">Average Humidity</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="AvgHumidity">N/A%</Label>
+                            <Label TextColor="White">Highest Humidity</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="HighHumidity">N/A%</Label>
+                            <Label TextColor="White">Lowest Humidity</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="LowHumidity">N/A%</Label>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid>
+                        <RoundRectangle Fill="#EAB308" CornerRadius="5" />
+                        <StackLayout Padding="5">
+                            <Label TextColor="White">Total Rain</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="TotalRain">N/A mm</Label>
+                            <Label TextColor="White">Average Rain Per Second</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="AvgRPS">N/A mm/s</Label>
+                            <Label TextColor="White">Average Rain Per Hour</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="AvgRPH">N/A mm/h</Label>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid>
+                        <RoundRectangle Fill="#111827" CornerRadius="5" />
+                        <StackLayout Padding="5">
+                            <Label TextColor="White">Average Wind Direction</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="AvgWindDir">N/A°</Label>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid>
+                        <RoundRectangle Fill="#3B82F6" CornerRadius="5" />
+                        <StackLayout Padding="5">
+                            <Label TextColor="White">Average Wind Speed</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="AvgWindSpeed">N/A mph</Label>
+                            <Label TextColor="White">Highest Wind Speed</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="HighWindSpeed">N/A mph</Label>
+                            <Label TextColor="White">Lowest Wind Speed</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="LowWindSpeed">N/A mph</Label>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid>
+                        <RoundRectangle Fill="#22C55E" CornerRadius="5" />
+                        <StackLayout Padding="5">
+                            <Label TextColor="White">Average Air Pressure</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="AvgPressure">N/A hPA</Label>
+                            <Label TextColor="White">Highest Air Pressure</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="HighPressure">N/A hPA</Label>
+                            <Label TextColor="White">Lowest Air Pressure</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="LowPressure">N/A hPA</Label>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid>
+                        <RoundRectangle Fill="#EAB308" CornerRadius="5" />
+                        <StackLayout Padding="5">
+                            <Label TextColor="White">Average Light Level</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="AvgLight">N/A lx</Label>
+                            <Label TextColor="White">Highest Light Level</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="HighLight">N/A lx</Label>
+                            <Label TextColor="White">Lowest Light Level</Label>
+                            <Label TextColor="White" FontAttributes="Bold" FontSize="25" x:Name="LowLight">N/A lx</Label>
+                        </StackLayout>
+                    </Grid>
+
+                    <lvc:CartesianChart x:Name="TempGraph" HeightRequest="300" HorizontalOptions="CenterAndExpand"></lvc:CartesianChart>
+                    <lvc:CartesianChart x:Name="HumidityGraph" HeightRequest="300" HorizontalOptions="CenterAndExpand"></lvc:CartesianChart>
+                    <!-- Rain, rain per second, rain per hour -->
+                    <lvc:CartesianChart x:Name="WindSpeedGraph" HeightRequest="300" HorizontalOptions="CenterAndExpand"></lvc:CartesianChart>
+                    <lvc:PolarChart x:Name="WindDirectionGraph" HeightRequest="300" HorizontalOptions="CenterAndExpand"></lvc:PolarChart>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

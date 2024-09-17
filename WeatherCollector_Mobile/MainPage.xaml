@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherCollector_Mobile.MainPage"
+             Title="Home"
+             Loaded="ContentPage_Loaded">
+    <RefreshView x:Name="Reload" Refreshing="Reload_Refreshing">
+        <ScrollView>
+            <VerticalStackLayout Padding="10">
+                <Grid HeightRequest="175">
+                    <Rectangle HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Fill="Black"></Rectangle>
+                    <Image VerticalOptions="CenterAndExpand" HorizontalOptions="Center" x:Name="CurrentImage"></Image>
+                    <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsEnabled="True" IsRunning="True" IsVisible="True" x:Name="CurrentImageLoader"></ActivityIndicator>
+                </Grid>
+
+                <Grid Padding="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label FontSize="50" Grid.RowSpan="5" VerticalOptions="Center" HorizontalOptions="Center" x:Name="Temp">25°C</Label>
+
+                    <Label Grid.Column="1" Grid.Row="0" x:Name="Humidity">50.00%</Label>
+                    <Label Grid.Column="1" Grid.Row="1" x:Name="Rain">0.00 mm (0.00 mm/h)</Label>
+                    <Label Grid.Column="1" Grid.Row="2" x:Name="WindDir">315°</Label>
+                    <Label Grid.Column="1" Grid.Row="3" x:Name="WindSpeed">0.00 mph</Label>
+                    <Label Grid.Column="1" Grid.Row="4" x:Name="Pressure">500.00 hPA</Label>
+                </Grid>
+
+                <GraphicsView x:Name="WindDirectionView" 
+                      Drawable="{Binding WindDirectionDrawable}" 
+                      HeightRequest="300" 
+                      WidthRequest="300"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center"/>
+
+                <Label HorizontalOptions="Center" x:Name="LastUpdated">Last updated at: 00:00:00 on 00/00/0000</Label>
+                <Label HorizontalOptions="Center" x:Name="PredictedUpdate">Predicted time until update: 00:00</Label>
+
+                <!--<Button Text="Refresh now" x:Name="RefreshBtn" Clicked="RefreshBtn_Clicked"></Button>-->
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

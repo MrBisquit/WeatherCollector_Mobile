@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherCollector_Mobile.DataPage"
+             xmlns:dg="clr-namespace:Maui.DataGrid;assembly=Maui.DataGrid"
+             Title="Data"
+             Loaded="ContentPage_Loaded">
+    <Grid Padding="10">
+        <RefreshView x:Name="Reload" Refreshing="Reload_Refreshing">
+            <ScrollView HorizontalScrollBarVisibility="Always">
+                <StackLayout>
+                    <StackLayout Spacing="3">
+                        <Label>Year:</Label>
+                        <Picker x:Name="Year" SelectedIndexChanged="Year_SelectedIndexChanged"></Picker>
+                        <Label>Month:</Label>
+                        <Picker x:Name="Month" SelectedIndexChanged="Month_SelectedIndexChanged" IsEnabled="False"></Picker>
+                        <Label>Day:</Label>
+                        <Picker x:Name="Day" SelectedIndexChanged="Day_SelectedIndexChanged" IsEnabled="False"></Picker>
+                        <Button Text="Fetch data" x:Name="FetchDataBtn" Clicked="FetchDataBtn_Clicked" IsEnabled="False"></Button>
+                    </StackLayout>
+                
+                    <Label>It is better to view this when your phone is horizontal.</Label>
+                    <dg:DataGrid x:Name="Data">
+                        <dg:DataGrid.Columns>
+                            <!--<dg:DataGridColumn Title="ID" Width="20"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Date saved" Width="100"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Temperature (°C)" Width="150"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Humidity level (%)" Width="150"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Rain (mm)" Width="100"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Rain per hour (mm/h)" Width="200"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Wind direction (°)" Width="150"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Wind speed (mph)" Width="150"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Air pressure (hPA)" Width="150"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Light (lx)" Width="100"></dg:DataGridColumn>-->
+                            <dg:DataGridColumn Title="ID" PropertyName="ID"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Date saved" PropertyName="DateSaved"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Temp (°C)" PropertyName="Temp"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Humidity (%)" PropertyName="Humidity"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Rain (mm)"  PropertyName="Rain"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Rain per hour (mm/h)"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Wind dir (°)"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Wind speed (mph)"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Pressure (hPA)"></dg:DataGridColumn>
+                            <dg:DataGridColumn Title="Light (lx)"></dg:DataGridColumn>
+                        </dg:DataGrid.Columns>
+                    </dg:DataGrid>
+                </StackLayout>
+            </ScrollView>
+        </RefreshView>
+    </Grid>
+</ContentPage>
